@@ -1,4 +1,6 @@
 <script>
+    import { store } from "../store";
+    
     export default {
         name: "AppSearchBar",
         data() {
@@ -12,8 +14,8 @@
 
 <template>
     <div class="container py-3">
-        <input type="text" name="searchBar" id="">
-        <input type="button" value="Search">
+        <input type="text" placeholder="Search a movie..." v-model="store.query" @keyup.enter="$emit('search')">
+        <input type="button" value="Search" @click="$emit('search')">
     </div>
 </template>
 
