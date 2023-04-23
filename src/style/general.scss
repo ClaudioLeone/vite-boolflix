@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+:root {
+    --header-height: 75px;
+}
+
 body {
     color: white;
     background-color: #211f27;

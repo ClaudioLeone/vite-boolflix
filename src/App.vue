@@ -2,12 +2,12 @@
   import { store } from "./store";
   import axios from "axios";
   import AppSearchBar from './components/AppSearchBar.vue';
-  import LangFlag from 'vue-lang-code-flags';
+  import AppCard from "./components/AppCard.vue";
 
   export default {
     components: {
       AppSearchBar,
-      LangFlag
+      AppCard
     },
     data() {
       return {
@@ -35,29 +35,43 @@
 </script>
 
 <template>
-  <AppSearchBar @search="getQuery"/>
-  <div class="container p-0">
-    <ul>
-      <li v-for="film in store.films">
-        <strong>Name:</strong> <i>{{ film.title }}</i> ||| 
-        <strong>Original name:</strong> <i>{{ film.original_title }}</i> ||| 
-        <strong>Language:</strong> <lang-flag :iso="film.original_language" /> ||| 
-        <strong>Vote:</strong> <i>{{ film.vote_average }}</i>
-      </li>
-      <hr>
+  <div class="header d-flex justify-content-between align-items-center p-4">
+    <h1 id="logo-title"><span id="first-title-letter">B</span>oolflix</h1>
+    <AppSearchBar @search="getQuery"/>
+  </div>
+  <div class="container d-flex flex-wrap films-container justify-content-between align-items-center">
+      <AppCard />
+    <!-- <ul>
       <li v-for="singleSeries in store.series">
         <strong>Name:</strong> <i>{{singleSeries.name}}</i> ||| 
         <strong>Original name:</strong> <i>{{ singleSeries.original_name }}</i> ||| 
         <strong>Language:</strong> <lang-flag :iso="singleSeries.original_language" /> ||| 
         <strong>Vote:</strong> <i>{{ singleSeries.vote_average }}</i>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
 <style scoped lang="scss">
 @use "./style/general.scss";
-li {
-  list-style: square;
+
+#first-title-letter {
+  color: red;
+  font-style: oblique;
+  font-size: 3.25rem;
+}
+
+#logo-title {
+  line-height: var(--header-height);
+  vertical-align: center;
+}
+
+.header {
+  height: var(--header-height);
+  background-color: black;
+}
+.films-container {
+  width: 100%;
+  height: fit-content;
 }
 </style>
