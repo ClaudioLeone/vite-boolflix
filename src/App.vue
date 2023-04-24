@@ -3,11 +3,13 @@
   import axios from "axios";
   import AppSearchBar from './components/AppSearchBar.vue';
   import AppCard from "./components/AppCard.vue";
+  import AppSeriesCard from "./components/AppSeriesCard.vue";
 
   export default {
     components: {
       AppSearchBar,
-      AppCard
+      AppCard,
+      AppSeriesCard
     },
     data() {
       return {
@@ -39,14 +41,14 @@
     <h1 id="logo-title"><span id="first-title-letter">B</span>oolflix</h1>
     <AppSearchBar @search="getQuery"/>
   </div>
-  <div class="container d-flex flex-wrap films-container justify-content-between align-items-center">
-      <AppCard />
+  <div class="container">
+      <div class="films-container  d-flex flex-wrap justify-content-between align-items-center">
+        <AppCard />
+        <AppSeriesCard />
+      </div>
     <!-- <ul>
       <li v-for="singleSeries in store.series">
-        <strong>Name:</strong> <i>{{singleSeries.name}}</i> ||| 
-        <strong>Original name:</strong> <i>{{ singleSeries.original_name }}</i> ||| 
-        <strong>Language:</strong> <lang-flag :iso="singleSeries.original_language" /> ||| 
-        <strong>Vote:</strong> <i>{{ singleSeries.vote_average }}</i>
+        
       </li>
     </ul> -->
   </div>
@@ -72,6 +74,6 @@
 }
 .films-container {
   width: 100%;
-  height: fit-content;
+  padding: 15px;
 }
 </style>

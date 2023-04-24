@@ -3,12 +3,12 @@
     import LangFlag from 'vue-lang-code-flags';
 
     export default {
-        name: 'AppCard',
+        name: 'AppSeriesCard',
         components: {
             LangFlag,
         },
         proprs: {
-            film: Object
+            serie: Object
         },
         data() {
             return {
@@ -19,17 +19,18 @@
 </script>
 
 <template>
-    <div class="film-card" v-for="film in store.films">
-        <h5 class="title">{{ film.title }}</h5>
-        <h6>Original name: <i>{{ film.original_title }}</i></h6>
-        <h6>Language: <span><lang-flag :iso="film.original_language" /></span></h6>
-        <h6>Vote: {{ film.vote_average }}</h6>
-        <h6 class="film-type"><i>Film</i></h6>
+    
+    <div class="series-card" v-for="singleSeries in store.series">
+        <h5 class="title">{{ singleSeries.name }}</h5>
+        <h6>Original name: <i>{{ singleSeries.original_name }}</i></h6>
+        <h6>Language: <span><lang-flag :iso="singleSeries.original_language" /></span></h6>
+        <h6>Vote: {{ singleSeries.vote_average }}</h6>
+        <h6 class="series-type"><i>Series</i></h6>
     </div>
 </template>
 
 <style>
-    .film-card {
+    .series-card {
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -38,7 +39,7 @@
         height: 350px;
         border: 1px solid #c9c9c9;
         border-radius: 10px;
-        background-color: #090a09;
+        background-color: #0a090a;
         margin: 5px 0;
         padding: 0 5px;
         cursor: pointer;
@@ -46,11 +47,12 @@
 
     .title {
         color: coral;
+        text-shadow: 0 0 3px coral;
     }
 
-    .film-type {
-        color: #98d99e;
+    .series-type {
+        color: #b799c4;
         font-size: 0.85rem;
-        text-shadow: 0 0 3px #508155; 
+        text-shadow: 0 0 3px #7a6085;
     }
 </style>
