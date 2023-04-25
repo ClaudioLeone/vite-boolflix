@@ -23,12 +23,10 @@
         if(store.query) {           
           axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${store.apiKey}&query=${store.query}`).then(resp => {
             store.films = resp.data.results;
-            console.log(store.films);
           });
 
           axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${store.apiKey}&query=${store.query}`).then(resp => {
             store.series = resp.data.results;
-            console.log(store.series);
           });
         }
       },
@@ -41,16 +39,12 @@
     <h1 id="logo-title"><span id="first-title-letter">B</span>oolflix</h1>
     <AppSearchBar @search="getQuery"/>
   </div>
+
   <div class="container">
-      <div class="films-container  d-flex flex-wrap justify-content-between align-items-center">
+      <div class="movies-container d-flex flex-wrap justify-content-center align-items-center">
         <AppCard />
         <AppSeriesCard />
       </div>
-    <!-- <ul>
-      <li v-for="singleSeries in store.series">
-        
-      </li>
-    </ul> -->
   </div>
 </template>
 
@@ -72,7 +66,7 @@
   height: var(--header-height);
   background-color: black;
 }
-.films-container {
+.movies-container {
   width: 100%;
   padding: 15px;
 }
